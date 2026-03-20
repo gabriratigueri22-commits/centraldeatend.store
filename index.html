@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vera Cruz Serviços e Locações LTDA. Soluções B2B integradas: Gestão de Saúde, Terceirização, Facilities e Frota em Pernambuco.">
+    <title>Vera Cruz | Gestão Integrada e Facilities</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root { --vc-blue: #0A2540; --vc-orange: #FF6B35; --vc-light: #F8F9FA; --vc-grey: #636E72; }
+        body { font-family: 'Roboto', sans-serif; color: #2D3436; background-color: #fff; overflow-x: hidden; }
+        
+        /* Navbar Corporativa */
+        .navbar { background: #fff; box-shadow: 0 2px 15px rgba(0,0,0,0.08); padding: 15px 0; }
+        .navbar-brand { font-weight: 900; color: var(--vc-blue) !important; font-size: 1.6rem; letter-spacing: -1px; }
+        .navbar-brand span { color: var(--vc-orange); }
+        .nav-link { font-weight: 700; color: var(--vc-grey); font-size: 0.9rem; text-transform: uppercase; margin: 0 12px; transition: 0.3s; }
+        .nav-link:hover { color: var(--vc-blue); }
+
+        /* Dobra 1: Hero B2B */
+        .hero { 
+            background: linear-gradient(90deg, rgba(10, 37, 64, 0.95) 0%, rgba(10, 37, 64, 0.7) 100%), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80') center/cover;
+            padding: 150px 0 130px; color: white;
+        }
+        .hero-badge { display: inline-block; background: rgba(255, 107, 53, 0.2); color: #FF6B35; padding: 6px 15px; border-radius: 4px; font-weight: 700; font-size: 0.8rem; margin-bottom: 20px; border: 1px solid var(--vc-orange); text-transform: uppercase; }
+
+        /* Dobra 2: Institucional */
+        .institucional { padding: 90px 0; background: var(--vc-light); }
+        .feature-box { border-left: 4px solid var(--vc-orange); padding-left: 20px; margin-bottom: 30px; }
+        .feature-box h4 { font-weight: 700; color: var(--vc-blue); font-size: 1.2rem; }
+
+        /* Dobra 3: Nossas Soluções (CNAEs Integrados) */
+        .solucoes { padding: 100px 0; }
+        .card-servico { 
+            background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 40px 30px; 
+            transition: 0.3s; height: 100%; position: relative; overflow: hidden;
+        }
+        .card-servico:hover { box-shadow: 0 15px 40px rgba(0,0,0,0.08); transform: translateY(-5px); border-color: var(--vc-blue); }
+        .icon-wrapper { width: 60px; height: 60px; background: var(--vc-light); color: var(--vc-blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 25px; transition: 0.3s; }
+        .card-servico:hover .icon-wrapper { background: var(--vc-blue); color: #fff; }
+
+        /* Dobra 4: Compliance e Autoridade */
+        .compliance { background: var(--vc-blue); color: white; padding: 80px 0; }
+        .compliance h3 { font-weight: 300; line-height: 1.5; }
+        .compliance strong { color: var(--vc-orange); }
+
+        /* Dobra 5: Contato e Mapa */
+        .contato { padding: 100px 0; background: var(--vc-light); }
+        .form-control { border-radius: 4px; border: 1px solid #ddd; padding: 14px; margin-bottom: 15px; background: #fff; }
+        .form-control:focus { box-shadow: none; border-color: var(--vc-orange); }
+        .btn-orange { background: var(--vc-orange); color: white; font-weight: 700; padding: 15px 30px; border-radius: 4px; border: none; transition: 0.3s; text-transform: uppercase; }
+        .btn-orange:hover { background: #e55a2b; color: white; }
+        .mapa-box { border-radius: 8px; overflow: hidden; height: 100%; min-height: 450px; border: 4px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+        /* Footer */
+        footer { background: #051320; color: #8892b0; padding: 70px 0 20px; font-size: 0.9rem; }
+        footer h5 { color: #fff; font-weight: 700; margin-bottom: 20px; font-size: 1.1rem; }
+        .footer-links a { color: #8892b0; text-decoration: none; display: block; margin-bottom: 8px; transition: 0.3s; }
+        .footer-links a:hover { color: var(--vc-orange); }
+        .copy-line { border-top: 1px solid rgba(255,255,255,0.05); margin-top: 50px; padding-top: 20px; font-size: 0.8rem; text-align: center; }
+
+        /* Flutuantes */
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; z-index: 1000; box-shadow: 0 10px 25px rgba(0,0,0,0.2); transition: 0.3s; text-decoration: none; }
+        .wa-float:hover { transform: scale(1.08); color: white; }
+        
+        #cookie-banner { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 95%; max-width: 900px; background: #fff; border-radius: 8px; padding: 25px; z-index: 9999; box-shadow: 0 20px 50px rgba(0,0,0,0.15); display: flex; align-items: center; justify-content: space-between; border-left: 6px solid var(--vc-blue); }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/5581999999999" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">VERA<span>CRUZ</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBarMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navBarMenu">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="#institucional">A Empresa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#solucoes">Operações B2B</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Fale Conosco</a></li>
+                </ul>
+                <a href="#contato" class="btn btn-orange btn-sm py-2 px-4">Portal do Cliente</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero text-center text-lg-start">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="hero-badge">Facilities & Terceirização de Serviços</div>
+                    <h1 class="display-4 fw-bold mb-4">Gestão Operacional de Alto Desempenho.</h1>
+                    <p class="lead mb-5 opacity-75">A Vera Cruz integra suporte à gestão de saúde, locação de frotas e terceirização de equipes, garantindo que sua empresa foque no que realmente importa: o seu negócio principal.</p>
+                    <a href="#solucoes" class="btn btn-orange btn-lg me-3">Nossas Verticais</a>
+                    <a href="#contato" class="btn btn-outline-light btn-lg">Solicitar Cotação</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="institucional" class="institucional">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h6 class="text-uppercase fw-bold" style="color: var(--vc-orange);">A Nossa Estrutura</h6>
+                    <h2 class="display-6 fw-bold mb-4" style="color: var(--vc-blue);">Solidez e Eficiência em Pernambuco.</h2>
+                    <p class="mb-4 text-muted">A **Vera Cruz Serviços e Locações LTDA** foi fundada para suprir a lacuna entre a operação diária das empresas e a gestão de suas frotas, equipes de saúde e treinamentos. Nosso foco é reduzir o custo operacional das organizações atendidas com serviços de alta previsibilidade e qualidade contínua.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row g-4">
+                        <div class="col-sm-6">
+                            <div class="feature-box">
+                                <h4>Compliance Laboral</h4>
+                                <p class="small text-muted mb-0">Rigoroso controle de admissões, rescisões e EPIs de terceiros.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="feature-box">
+                                <h4>Renovação Contínua</h4>
+                                <p class="small text-muted mb-0">Frotas de locação modernas e equipamentos de higienização de ponta.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="feature-box">
+                                <h4>Gestão Integrada</h4>
+                                <p class="small text-muted mb-0">Do treinamento de pessoal ao controle sanitário de sua unidade.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="feature-box">
+                                <h4>Resposta Ágil</h4>
+                                <p class="small text-muted mb-0">Backoffice completo sediado em Camaragibe/PE.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solucoes" class="solucoes">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6 class="text-uppercase fw-bold" style="color: var(--vc-orange);">Verticais de Atuação</h6>
+                <h2 class="display-6 fw-bold" style="color: var(--vc-blue);">Soluções Corporativas Completas</h2>
+            </div>
+            <div class="row g-4 justify-content-center">
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-servico">
+                        <div class="icon-wrapper"><i class="fas fa-notes-medical"></i></div>
+                        <h5 class="fw-bold mb-3">Apoio à Gestão de Saúde</h5>
+                        <p class="small text-muted mb-0">Gestão de ambulatórios corporativos e planejamento de programas ocupacionais, alinhando normativas de segurança e controle de atestados. (CNAE 86.60-7-00)</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-servico">
+                        <div class="icon-wrapper"><i class="fas fa-users-cog"></i></div>
+                        <h5 class="fw-bold mb-3">Locação de Mão de Obra</h5>
+                        <p class="small text-muted mb-0">Recrutamento e fornecimento de trabalho temporário especializado para demandas sazonais e de picos operacionais industriais ou corporativos. (CNAE 78.20-5-00)</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-servico">
+                        <div class="icon-wrapper"><i class="fas fa-car-side"></i></div>
+                        <h5 class="fw-bold mb-3">Gestão de Frotas e Locação</h5>
+                        <p class="small text-muted mb-0">Locação corporativa de automóveis sem condutor para equipes executivas ou comerciais, com manutenção e seguro geridos centralmente. (CNAE 77.11-0-00)</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-servico">
+                        <div class="icon-wrapper"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <h5 class="fw-bold mb-3">Treinamentos e Eventos</h5>
+                        <p class="small text-muted mb-0">Organização de congressos, exposições e desenvolvimento profissional (NRs) in-company para mitigação de passivo trabalhista. (CNAE 85.99-6-04, 82.30-0-01)</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card-servico">
+                        <div class="icon-wrapper"><i class="fas fa-bug"></i></div>
+                        <h5 class="fw-bold mb-3">Controle de Pragas (Facilities)</h5>
+                        <p class="small text-muted mb-0">Programas contínuos de desinsetização e controle sanitário (CIP) emitindo laudos técnicos obrigatórios para comércio, saúde e indústrias. (CNAE 81.22-2-00)</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="compliance text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h3 class="display-6">Terceirize de forma segura. Nossas operações seguem rígidos processos de <strong>Certificação de Qualidade</strong>, regulamentos do <strong>Ministério do Trabalho</strong> e normativas da <strong>ANVISA</strong> no segmento de facilities hospitalares e controle vetorial.</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contato">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <h6 class="text-uppercase fw-bold" style="color: var(--vc-orange);">Contato Executivo</h6>
+                    <h2 class="display-6 fw-bold mb-4" style="color: var(--vc-blue);">Vamos alinhar a operação.</h2>
+                    <p class="text-muted mb-4">Deixe seus dados e uma breve descrição da sua necessidade corporativa (Facilities, Saúde, Locação ou RH). Retornaremos para dimensionar sua proposta técnica.</p>
+                    
+                    <form onsubmit="event.preventDefault(); alert('Cotação enviada ao departamento comercial. Protocolo C-2026/BR. Aguarde nosso contato.'); this.reset();">
+                        <div class="row g-2">
+                            <div class="col-md-6"><input type="text" class="form-control" placeholder="Seu Nome" required></div>
+                            <div class="col-md-6"><input type="text" class="form-control" placeholder="CNPJ / Empresa" required></div>
+                        </div>
+                        <input type="email" class="form-control" placeholder="E-mail Corporativo" required>
+                        <input type="tel" class="form-control" placeholder="Telefone Corporativo" required>
+                        <select class="form-control" required>
+                            <option value="">Área de Interesse...</option>
+                            <option value="saude">Apoio à Gestão de Saúde / SESMT</option>
+                            <option value="frota">Locação de Veículos</option>
+                            <option value="rh">Mão de Obra Temporária</option>
+                            <option value="facilities">Treinamentos / Controle de Pragas / Eventos</option>
+                        </select>
+                        <textarea class="form-control" rows="4" placeholder="Detalhes da sua necessidade"></textarea>
+                        <button type="submit" class="btn-orange w-100 mt-2">Enviar RFP / Solicitação</button>
+                    </form>
+                </div>
+                
+                <div class="col-lg-7">
+                    <div class="mapa-box">
+                        <iframe 
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            src="https://maps.google.com/maps?q=Avenida%20Vera%20Cruz,%20188,%20Vera%20Cruz,%20Camaragibe%20-%20PE&t=&z=15&ie=UTF8&iwloc=&output=embed">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <h5>VERA CRUZ SERVIÇOS E LOCAÇÕES</h5>
+                    <p class="mb-4">Especialistas em Gestão e Terceirização de Serviços B2B. Solidez e agilidade para o mercado de Pernambuco.</p>
+                    <p class="mb-1"><i class="fas fa-building me-2"></i> Avenida Vera Cruz, 188 - Bairro Vera Cruz</p>
+                    <p class="mb-1 ms-4">Camaragibe - PE, CEP: 54786-770</p>
+                    <p class="mt-3"><i class="fas fa-envelope me-2"></i> comercial@veracruzlocacoes.com.br</p>
+                </div>
+                <div class="col-lg-3">
+                    <h5>COMPLIANCE</h5>
+                    <p class="mb-0"><strong>CNPJ:</strong> 65.614.715/0001-80</p>
+                    <p class="mt-3 small">Empresa devidamente registrada para a prestação dos serviços principais e correlatos constantes nas áreas de RH, Frota, Eventos e Gestão em Saúde.</p>
+                </div>
+                <div class="col-lg-4 footer-links text-lg-end">
+                    <h5>TRANSPARÊNCIA E POLÍTICAS</h5>
+                    <a href="politicas.html">Política de Privacidade (LGPD)</a>
+                    <a href="politicas.html#termos">Termos e Condições de Serviço</a>
+                    <a href="politicas.html#cookies">Gestão de Cookies e Tráfego</a>
+                </div>
+            </div>
+            <div class="copy-line">
+                © 2026 Vera Cruz Servicos e Locacoes LTDA - Camaragibe/PE. Todos os Direitos Reservados. Site auditado.
+            </div>
+        </div>
+    </footer>
+
+    <div id="cookie-banner">
+        <div>
+            <p class="fw-bold mb-1" style="color: var(--vc-blue);">Privacidade Corporativa</p>
+            <p class="small mb-0 text-muted">Este portal utiliza cookies de desempenho (Analytics e Ads) para aprimorar a experiência B2B. Ao seguir navegando, você concorda com a <a href="politicas.html" style="color: var(--vc-orange); font-weight: 700;">Política de Tratamento de Dados</a>.</p>
+        </div>
+        <div class="ms-3">
+            <button class="btn btn-outline-dark btn-sm fw-bold" onclick="document.getElementById('cookie-banner').style.display='none'">Concordar</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
